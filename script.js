@@ -369,3 +369,106 @@ navStyle.textContent = `.nav-link.active { color: var(--accent-cyan); background
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }`;
 document.head.appendChild(navStyle);
+
+// ============================================================
+// 12. PORTFOLIO THEME SWITCHER
+// ============================================================
+const THEME_KEY = 'portfolio-visual-theme';
+
+// Particle color map per theme
+const PARTICLE_COLORS = {
+  'dark-aqua': ['#00e5ff', '#7c3aed'],
+  'anime': ['#ff6eb4', '#c084fc'],
+  'glassmorphism': ['#818cf8', '#a78bfa'],
+  'elevated': ['#f97316', '#3b82f6'],
+  'light': ['#0284c7', '#6d28d9'],
+  'nature': ['#22c55e', '#eab308'],
+  'colorful': ['#f97316', '#4ecdc4', '#ec4899', '#a855f7'],
+  'threed': ['#60a5fa', '#f472b6'],
+  'minimal': ['#555555', '#888888'],
+};
+
+let current3DCleanups = [];
+
+function apply3DTilt() {
+  document.querySelectorAll('.glass-tile').forEach(tile => {
+    const onMove = (e) => {
+      const r = tile.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      tile.style.transform =
+        `perspective(900px) rotateY(${x * 16}deg) rotateX(${-y * 16}deg) translateZ(14px)`;
+    };
+    const onLeave = () => {
+      tile.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg) translateZ(0)';
+    };
+    tile.addEventListener('mousemove', onMove);
+    tile.addEventListener('mouseleave', onLeave);
+    current3DCleanups.push(() => {
+      tile.removeEventListener('mousemove', onMove);
+      tile.removeEventListener('mouseleave', onLeave);
+      tile.style.transform = '';
+    });
+  });
+}
+
+function remove3DTilt() {
+  current3DCleanups.forEach(fn => fn());
+  current3DCleanups = [];
+}
+
+function syncParticleColors(themeName) {
+  const cols = PARTICLE_COLORS[themeName] || PARTICLE_COLORS['dark-aqua'];
+  particles.forEach(p => {
+    p.color = cols[Math.floor(Math.random() * cols.length)];
+  });
+}
+
+function applyPortfolioTheme(themeName, baseTheme) {
+  // Set portfolio theme attribute
+  html.setAttribute('data-portfolio-theme', themeName);
+
+  // Set base dark/light mode
+  html.setAttribute('data-theme', baseTheme);
+  localStorage.setItem('portfolio-theme', baseTheme);
+
+  // Update particle colors
+  syncParticleColors(themeName);
+
+  // Handle 3D tilt
+  if (themeName === 'threed') {
+    apply3DTilt();
+  } else {
+    remove3DTilt();
+  }
+
+  // Update active button
+  document.querySelectorAll('.theme-card').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.themePick === themeName);
+  });
+
+  // Persist
+  localStorage.setItem(THEME_KEY, themeName);
+}
+
+// Wire up theme cards
+document.querySelectorAll('.theme-card').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pick = btn.dataset.themePick;
+    const base = btn.dataset.baseTheme || 'dark';
+    applyPortfolioTheme(pick, base);
+  });
+});
+
+// Restore saved portfolio theme on load
+(function () {
+  const saved = localStorage.getItem(THEME_KEY);
+  if (saved && saved !== 'dark-aqua') {
+    const btn = document.querySelector(`[data-theme-pick="${saved}"]`);
+    const base = btn ? (btn.dataset.baseTheme || 'dark') : 'dark';
+    applyPortfolioTheme(saved, base);
+  } else {
+    syncParticleColors('dark-aqua');
+  }
+})();
+
