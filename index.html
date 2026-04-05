@@ -1,1022 +1,1070 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark" data-portfolio-theme="dark-aqua">
+<html lang="en" data-theme="dark" data-color-theme="aqua" data-layout-theme="default">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Varun Tiruvail — Reporting Specialist & AI Innovator</title>
-  <meta name="description"
-    content="Portfolio of Varun Tiruvail — Reporting Specialist at UBS, passionate about AI, automation, and building elegant solutions to complex problems." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varun Tiruvail — Reporting Specialist &amp; AI Innovator</title>
+    <meta name="description"
+        content="Portfolio of Varun Tiruvail — Reporting Specialist at UBS, passionate about AI, automation, and building elegant solutions to complex problems.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Nunito:wght@300;400;600;800&family=JetBrains+Mono:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .nav-link.active {
+            color: var(--accent-cyan);
+            background: var(--accent-cyan-dim);
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- ============================================================
+    <!-- ====================================================
+       ISLAND NAV 1 — COLOR & FONT PALETTE
+       (Hovers top-left, controls data-color-theme)
+  ==================================================== -->
+    <div class="island-nav island-nav-color" id="islandNavColor">
+        <div class="island-tab">Aa</div>
+        <div class="island-panel">
+            <p class="island-label">Palette</p>
+            <button class="ipal-btn active" data-color="aqua">
+                <span class="ipal-dot" style="background:linear-gradient(135deg,#00e5ff,#7c3aed)"></span>
+                Aqua
+            </button>
+            <button class="ipal-btn" data-color="ember">
+                <span class="ipal-dot" style="background:linear-gradient(135deg,#f97316,#ef4444)"></span>
+                Ember
+            </button>
+            <button class="ipal-btn" data-color="forest">
+                <span class="ipal-dot" style="background:linear-gradient(135deg,#22c55e,#eab308)"></span>
+                Forest
+            </button>
+            <button class="ipal-btn" data-color="sakura">
+                <span class="ipal-dot" style="background:linear-gradient(135deg,#ff6eb4,#c084fc)"></span>
+                Sakura
+            </button>
+            <p class="island-label" style="margin-top:14px">Font</p>
+            <button class="ipal-btn ifont-btn active" data-font="outfit"
+                style="font-family:'Outfit',sans-serif">Outfit</button>
+            <button class="ipal-btn ifont-btn" data-font="playfair"
+                style="font-family:'Playfair Display',serif">Playfair</button>
+            <button class="ipal-btn ifont-btn" data-font="nunito"
+                style="font-family:'Nunito',sans-serif">Nunito</button>
+            <button class="ipal-btn ifont-btn" data-font="mono"
+                style="font-family:'JetBrains Mono',monospace">Mono</button>
+        </div>
+    </div>
+
+    <!-- ====================================================
+       ISLAND NAV 2 — LAYOUT / VISUAL THEME
+       (Hovers bottom-left, controls data-layout-theme)
+  ==================================================== -->
+    <div class="island-nav island-nav-layout" id="islandNavLayout">
+        <div class="island-tab">◈</div>
+        <div class="island-panel">
+            <p class="island-label">Theme</p>
+            <button class="ilayout-btn active" data-layout="default">
+                <span class="ilayout-icon">◉</span>
+                Default
+            </button>
+            <button class="ilayout-btn" data-layout="planet">
+                <span class="ilayout-icon">🪐</span>
+                3D Planet
+            </button>
+            <button class="ilayout-btn" data-layout="minimal">
+                <span class="ilayout-icon">◻</span>
+                Minimal
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ============================================================
        NAVBAR
   ============================================================ -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#hero" class="nav-logo">
-        <span class="logo-bracket">&lt;</span>VT<span class="logo-bracket">/&gt;</span>
-      </a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#themes" class="nav-link nav-themes-link">🎨 Themes</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#experience" class="nav-link">Experience</a></li>
-        <li><a href="#testimonials" class="nav-link">Reviews</a></li>
-        <li><a href="#blog" class="nav-link">Blog</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <circle cx="12" cy="12" r="5" />
-            <line x1="12" y1="1" x2="12" y2="3" />
-            <line x1="12" y1="21" x2="12" y2="23" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-            <line x1="1" y1="12" x2="3" y2="12" />
-            <line x1="21" y1="12" x2="23" y2="12" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-          </svg>
-        </button>
-        <a href="#contact" class="btn-hire">Hire Me</a>
-      </div>
-    </div>
-  </nav>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>VT<span class="logo-bracket">/&gt;</span>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <a href="#contact" class="btn-hire">Hire Me</a>
+            </div>
+        </div>
+    </nav>
 
-  <!-- ============================================================
+    <!-- ============================================================
        HERO SECTION
   ============================================================ -->
-  <section class="hero" id="hero">
-    <canvas id="particleCanvas"></canvas>
-    <div class="hero-content">
-      <div class="hero-text">
-        <div class="hero-badge reveal">
-          <span class="badge-dot"></span>
-          Available for Collaboration
+    <section class="hero" id="hero">
+        <canvas id="particleCanvas" width="854" height="914"></canvas>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge reveal active">
+                    <span class="badge-dot"></span>
+                    Available for Collaboration
+                </div>
+                <h1 class="hero-name reveal active">
+                    Hi, I'm <span class="gradient-text">Varun</span><br>
+                    <span class="hero-title-line">Tiruvail</span>
+                </h1>
+                <p class="hero-role reveal active">
+                    <span class="role-prefix">I am a&nbsp;</span>
+                    <span class="typed-text" id="typedText">AI Engineer</span>
+                    <span class="typed-cursor">|</span>
+                </p>
+                <p class="hero-tagline reveal active">"Obsessed with innovation, driven to decode the impossible"</p>
+                <div class="hero-cta reveal active">
+                    <a href="#projects" class="btn-primary">View My Work</a>
+                    <a href="#contact" class="btn-secondary">Get In Touch</a>
+                </div>
+                <div class="hero-stats reveal active">
+                    <div class="stat-item">
+                        <span class="stat-num" data-target="1.5">1.5</span>
+                        <span class="stat-unit">yr+</span>
+                        <span class="stat-label">Experience</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num" data-target="5">5</span>
+                        <span class="stat-unit"></span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num" data-target="10">10</span>
+                        <span class="stat-unit">+</span>
+                        <span class="stat-label">Technologies</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual reveal active">
+                <div class="avatar-wrapper">
+                    <div class="avatar-ring ring-1"></div>
+                    <div class="avatar-ring ring-2"></div>
+                    <div class="avatar-ring ring-3"></div>
+                    <div class="avatar-container">
+                        <img src="PortfolioImage.jpeg" alt="Varun Tiruvail" class="avatar-svg">
+                    </div>
+                </div>
+                <!-- Floating tech pills -->
+                <div class="tech-float tech-float-1">Python 🐍</div>
+                <div class="tech-float tech-float-2">AI 🤖</div>
+                <div class="tech-float tech-float-3">React ⚛️</div>
+                <div class="tech-float tech-float-4">SQL 🗄️</div>
+            </div>
         </div>
-        <h1 class="hero-name reveal">
-          Hi, I'm <span class="gradient-text">Varun</span><br />
-          <span class="hero-title-line">Tiruvail</span>
-        </h1>
-        <p class="hero-role reveal">
-          <span class="role-prefix">I am a&nbsp;</span>
-          <span class="typed-text" id="typedText"></span>
-          <span class="typed-cursor">|</span>
-        </p>
-        <p class="hero-tagline reveal">"Obsessed with innovation, driven to decode the impossible"</p>
-        <div class="hero-cta reveal">
-          <a href="#projects" class="btn-primary">View My Work</a>
-          <a href="#contact" class="btn-secondary">Get In Touch</a>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
         </div>
-        <div class="hero-stats reveal">
-          <div class="stat-item">
-            <span class="stat-num" data-target="1.5">0</span>
-            <span class="stat-unit">yr+</span>
-            <span class="stat-label">Experience</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-num" data-target="5">0</span>
-            <span class="stat-unit"></span>
-            <span class="stat-label">Projects</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-num" data-target="10">0</span>
-            <span class="stat-unit">+</span>
-            <span class="stat-label">Technologies</span>
-          </div>
-        </div>
-      </div>
-      <div class="hero-visual reveal">
-        <div class="avatar-wrapper">
-          <div class="avatar-ring ring-1"></div>
-          <div class="avatar-ring ring-2"></div>
-          <div class="avatar-ring ring-3"></div>
-          <div class="avatar-container">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="avatar-svg">
-              <defs>
-                <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#00e5ff;stop-opacity:1" />
-                </linearGradient>
-                <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" style="stop-color:#0a2040;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#050b18;stop-opacity:1" />
-                </radialGradient>
-                <clipPath id="avatarClip">
-                  <circle cx="100" cy="100" r="95" />
-                </clipPath>
-              </defs>
-              <circle cx="100" cy="100" r="100" fill="url(#bgGrad)" />
-              <!-- Body -->
-              <rect x="45" y="130" width="110" height="80" rx="20" fill="url(#avatarGrad)" opacity="0.9"
-                clip-path="url(#avatarClip)" />
-              <!-- Neck -->
-              <rect x="82" y="110" width="36" height="28" rx="8" fill="#c8a882" />
-              <!-- Head -->
-              <ellipse cx="100" cy="88" rx="34" ry="38" fill="#c8a882" />
-              <!-- Hair -->
-              <ellipse cx="100" cy="56" rx="34" ry="16" fill="#2d1b00" />
-              <ellipse cx="68" cy="78" rx="8" ry="22" fill="#2d1b00" />
-              <ellipse cx="132" cy="78" rx="8" ry="22" fill="#2d1b00" />
-              <!-- Eyes -->
-              <ellipse cx="88" cy="88" rx="5" ry="6" fill="#1a1a2e" />
-              <ellipse cx="112" cy="88" rx="5" ry="6" fill="#1a1a2e" />
-              <circle cx="89.5" cy="86.5" r="1.5" fill="white" opacity="0.8" />
-              <circle cx="113.5" cy="86.5" r="1.5" fill="white" opacity="0.8" />
-              <!-- Smile -->
-              <path d="M90 100 Q100 108 110 100" stroke="#8b6347" stroke-width="2" fill="none" stroke-linecap="round" />
-              <!-- Glow -->
-              <circle cx="100" cy="100" r="95" fill="none" stroke="url(#avatarGrad)" stroke-width="2" opacity="0.5" />
-            </svg>
-          </div>
-          <div class="avatar-badge">
-            <span>UBS</span>
-          </div>
-        </div>
-        <!-- Floating tech pills -->
-        <div class="tech-float tech-float-1">Python 🐍</div>
-        <div class="tech-float tech-float-2">AI 🤖</div>
-        <div class="tech-float tech-float-3">React ⚛️</div>
-        <div class="tech-float tech-float-4">SQL 🗄️</div>
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================================================
-       THEME SWITCHER SECTION
+
+    <!-- ============================================================
+       PLANET VISUAL — rendered in hero-visual for [data-layout-theme="planet"]
+       (CSS/JS controls visibility)
   ============================================================ -->
-  <section class="section themes-section" id="themes">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Personalize</span>
-        <h2 class="section-title">Choose Your <span class="gradient-text">Visual Style</span></h2>
-        <p class="section-subtitle">9 unique design aesthetics — pick the one that speaks to you</p>
-      </div>
-      <div class="themes-showcase reveal" style="--delay:0.2s">
 
-        <!-- 1. Dark Aqua -->
-        <button class="theme-card active" data-theme-pick="dark-aqua" data-base-theme="dark"
-          aria-label="Dark Aqua theme">
-          <div class="tc-preview" style="--p1:#050b18;--p2:#0a1628;--a1:#00e5ff;--a2:#7c3aed">
-            <div class="tc-bg"></div>
-            <div class="tc-mini"></div>
-            <div class="tc-orb1"></div>
-            <div class="tc-orb2"></div>
-          </div>
-          <div class="tc-dots"><span style="background:#00e5ff"></span><span style="background:#7c3aed"></span></div>
-          <span class="tc-name">Dark Aqua</span>
-          <span class="tc-sub">Default &middot; Cinematic</span>
-          <div class="tc-check">✓</div>
-        </button>
 
-        <!-- 2. Anime -->
-        <button class="theme-card" data-theme-pick="anime" data-base-theme="dark" aria-label="Anime theme">
-          <div class="tc-preview" style="--p1:#0d0814;--p2:#191030;--a1:#ff6eb4;--a2:#c084fc">
-            <div class="tc-bg"></div>
-            <div class="tc-mini"></div>
-            <div class="tc-orb1"></div>
-            <div class="tc-orb2"></div>
-          </div>
-          <div class="tc-dots"><span style="background:#ff6eb4"></span><span style="background:#c084fc"></span></div>
-          <span class="tc-name">Anime</span>
-          <span class="tc-sub">Sakura &middot; Vibrant</span>
-          <div class="tc-check">✓</div>
-        </button>
-
-        <!-- 3. Pure Glass -->
-        <button class="theme-card" data-theme-pick="glassmorphism" data-base-theme="dark"
-          aria-label="Glassmorphism theme">
-          <div class="tc-preview" style="--p1:#070714;--p2:#0d0d2e;--a1:#818cf8;--a2:#a78bfa">
-            <div class="tc-bg"></div>
-            <div class="tc-mini" style="backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"></div>
-            <div class="tc-orb1"></div>
-            <div class="tc-orb2"></div>
-          </div>
-          <div class="tc-dots"><span style="background:#818cf8"></span><span style="background:#a78bfa"></span></div>
-          <span class="tc-name">Pure Glass</span>
-          <span class="tc-sub">Crystal &middot; Frosted</span>
-          <div class="tc-check">✓</div>
-        </button>
-
-        <!-- 4. Elevated -->
-        <button class="theme-card" data-theme-pick="elevated" data-base-theme="dark" aria-label="Elevated theme">
-          <div class="tc-preview" style="--p1:#0e1117;--p2:#1a1f2e;--a1:#f97316;--a2:#3b82f6">
-            <div class="tc-bg"></div>
-            <div class="tc-mini" style="box-shadow:4px 4px 8px rgba(0,0,0,0.7),-2px -2px 5px rgba(255,255,255,0.04)">
-            </div>
-            <div class="tc-orb1"></div>
-            <div class="tc-orb2"></div>
-          </div>
-          <div class="tc-dots"><span style="background:#f97316"></span><span style="background:#3b82f6"></span></div>
-          <span class="tc-name">Elevated</span>
-          <span class="tc-sub">Neo-Shadow &middot; Raised</span>
-          <div class="tc-check">✓</div>
-        </button>
-
-        <!-- 5. Clean Light -->
-        <button class="theme-card" data-theme-pick="light" data-base-theme="light" aria-label="Light theme">
-          <div class="tc-preview" style="--p1:#f0f4f8;--p2:#ffffff;--a1:#0ea5e9;--a2:#7c3aed">
-            <div class="tc-bg"></div>
-            <div class="tc-mini" style="border:1px solid rgba(0,0,0,0.1)"></div>
-            <div class="tc-orb1"></div>
-            <div class="tc-orb2"></div>
-          </div>
-          <div class="tc-dots"><span style="background:#0ea5e9"></span><span style="background:#7c3aed"></span></div>
-          <span class="tc-name">Clean Light</span>
-          <span class="tc-sub">Airy &middot; Professional</span>
-          <div class="tc-check">✓</div>
-        </button>
-
-        <!-- 6. Nature -->
-        <button class="theme-card" data-theme-pick="nature" data-base-theme="dark" aria-label="Nature theme">
-          <div class="tc-preview" style="--p1:#0a1a0d;--p2:#0d2010;--a1:#22c55e;--a2:#eab308">
-            <div class="tc-bg"></div>
-            <div class="tc-mini"></div>
-            <div class="tc-orb1"></div>
-            <div class="tc-orb2"></div>
-          </div>
-          <div class="tc-dots"><span style="background:#22c55e"></span><span style="background:#eab308"></span></div>
-          <span class="tc-name">Nature</span>
-          <span class="tc-sub">Forest &middot; Organic</span>
-          <div class="tc-check">✓</div>
-        </button>
-
-        <!-- 7. Colorful -->
-        <button class="theme-card" data-theme-pick="colorful" data-base-theme="dark" aria-label="Colorful theme">
-          <div class="tc-preview" style="--p1:#0a0512;--p2:#0f0720;--a1:#f97316;--a2:#4ecdc4">
-            <div class="tc-bg" style="background:linear-gradient(135deg,#0a0512,#0f0720)"></div>
-            <div class="tc-mini"
-              style="background:linear-gradient(135deg,rgba(249,115,22,0.2),rgba(78,205,196,0.2),rgba(168,85,247,0.2))">
-            </div>
-            <div class="tc-orb1"></div>
-            <div class="tc-orb2"></div>
-          </div>
-          <div class="tc-dots"><span style="background:linear-gradient(90deg,#f97316,#ec4899)"></span><span
-              style="background:linear-gradient(90deg,#4ecdc4,#818cf8)"></span></div>
-          <span class="tc-name">Colorful</span>
-          <span class="tc-sub">Rainbow &middot; Vivid</span>
-          <div class="tc-check">✓</div>
-        </button>
-
-        <!-- 8. 3D Depth -->
-        <button class="theme-card" data-theme-pick="threed" data-base-theme="dark" aria-label="3D theme">
-          <div class="tc-preview" style="--p1:#0c0c1e;--p2:#101030;--a1:#60a5fa;--a2:#f472b6">
-            <div class="tc-bg"></div>
-            <div class="tc-mini"
-              style="transform:perspective(200px) rotateY(12deg) rotateX(-6deg);box-shadow:8px 8px 16px rgba(0,0,0,0.6)">
-            </div>
-            <div class="tc-orb1"></div>
-            <div class="tc-orb2"></div>
-          </div>
-          <div class="tc-dots"><span style="background:#60a5fa"></span><span style="background:#f472b6"></span></div>
-          <span class="tc-name">3D Depth</span>
-          <span class="tc-sub">Spatial &middot; Immersive</span>
-          <div class="tc-check">✓</div>
-        </button>
-
-        <!-- 9. Minimal -->
-        <button class="theme-card" data-theme-pick="minimal" data-base-theme="dark" aria-label="Minimal theme">
-          <div class="tc-preview" style="--p1:#111111;--p2:#1a1a1a;--a1:#ffffff;--a2:#555555">
-            <div class="tc-bg"></div>
-            <div class="tc-mini"
-              style="background:transparent;border:1px solid rgba(255,255,255,0.15);border-radius:2px"></div>
-            <div class="tc-orb1" style="opacity:0.2"></div>
-          </div>
-          <div class="tc-dots"><span style="background:#e2e8f0"></span><span style="background:#555"></span></div>
-          <span class="tc-name">Minimal</span>
-          <span class="tc-sub">Zen &middot; Distraction-Free</span>
-          <div class="tc-check">✓</div>
-        </button>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
+    <!-- ============================================================
        ABOUT SECTION
   ============================================================ -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">About Me</span>
-        <h2 class="section-title">Decoding Complexity,<br /><span class="gradient-text">Building Elegance</span></h2>
-      </div>
-      <div class="about-grid">
-        <!-- Bio tile -->
-        <div class="glass-tile about-bio reveal">
-          <div class="tile-glow"></div>
-          <div class="about-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.5">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-          </div>
-          <h3>Who I Am</h3>
-          <p>Enthusiastic about exploring and experimenting with cutting-edge technologies, driven by a habit of diving
-            into the latest research, and obsessed with cracking complex problems into elegant solutions.</p>
-          <p>Currently working as a <strong>Reporting Specialist at UBS</strong>, automating customized reports for High
-            Net Worth Clients using Python, OLAP Servers, and MDX Queries.</p>
-          <div class="about-location">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            Mumbai, India
-          </div>
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header reveal active">
+                <span class="section-tag">About Me</span>
+                <h2 class="section-title">Decoding Complexity,<br><span class="gradient-text">Building Elegance</span>
+                </h2>
+            </div>
+            <div class="about-grid">
+                <!-- Bio tile -->
+                <div class="glass-tile about-bio reveal active">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 73.789% 11.8939%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <div class="about-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3>Who I Am</h3>
+                    <p>Enthusiastic about exploring and experimenting with cutting-edge technologies, driven by a habit
+                        of diving
+                        into the latest research, and obsessed with cracking complex problems into elegant solutions.
+                    </p>
+                    <p>Currently working as a <strong>Reporting Specialist</strong>, automating customized
+                        reports for High
+                        Net Worth Clients using Python, OLAP Servers, and MDX Queries.</p>
+                    <div class="about-location">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Mumbai, India
+                    </div>
+                </div>
+                <!-- Facts tiles -->
+                <div class="glass-tile about-fact reveal active" style="--delay:0.1s">
+                    <div class="tile-glow"></div>
+                    <div class="fact-icon">🎓</div>
+                    <h4>Education</h4>
+                    <p>MTech in Computer Science</p>
+                    <span class="fact-sub">Specialization in Artificial Intelligence</span>
+                </div>
+                <div class="glass-tile about-fact reveal active" style="--delay:0.2s">
+                    <div class="tile-glow"></div>
+                    <div class="fact-icon">🏢</div>
+                    <h4>Current Role</h4>
+                    <p>Reporting Specialist</p>
+                    <span class="fact-sub">Enterprise FinTech</span>
+                </div>
+                <div class="glass-tile about-fact reveal active" style="--delay:0.3s">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 99.1816% 32.76%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <div class="fact-icon">🚀</div>
+                    <h4>Passion</h4>
+                    <p>Agentic AI &amp; Automation</p>
+                    <span class="fact-sub">Building intelligent systems</span>
+                </div>
+                <!-- Elevated Traits tile -->
+                <div class="glass-tile about-softskills reveal active" style="--delay:0.4s">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 78.6372% 15.4177%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <h4>Core Traits</h4>
+                    <div class="trait-chips">
+                        <span class="chip">💡 Leadership</span>
+                        <span class="chip">🔍 Problem Solving</span>
+                        <span class="chip">💬 Communication</span>
+                        <span class="chip">☀️ Optimism</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Facts tiles -->
-        <div class="glass-tile about-fact reveal" style="--delay:0.1s">
-          <div class="tile-glow"></div>
-          <div class="fact-icon">🎓</div>
-          <h4>Education</h4>
-          <p>MTech in Computer Science</p>
-          <span class="fact-sub">Specialization in Artificial Intelligence</span>
-        </div>
-        <div class="glass-tile about-fact reveal" style="--delay:0.2s">
-          <div class="tile-glow"></div>
-          <div class="fact-icon">🏢</div>
-          <h4>Current Role</h4>
-          <p>Reporting Specialist</p>
-          <span class="fact-sub">UBS — FinTech Division</span>
-        </div>
-        <div class="glass-tile about-fact reveal" style="--delay:0.3s">
-          <div class="tile-glow"></div>
-          <div class="fact-icon">🌏</div>
-          <h4>Preferred Cities</h4>
-          <p>Hyderabad · Mumbai</p>
-          <span class="fact-sub">Bangalore · Open to Remote</span>
-        </div>
-        <div class="glass-tile about-fact reveal" style="--delay:0.4s">
-          <div class="tile-glow"></div>
-          <div class="fact-icon">🚀</div>
-          <h4>Passion</h4>
-          <p>Agentic AI & Automation</p>
-          <span class="fact-sub">Building intelligent systems</span>
-        </div>
-        <!-- Soft skills tile -->
-        <div class="glass-tile about-softskills reveal" style="--delay:0.5s">
-          <div class="tile-glow"></div>
-          <h4>Core Traits</h4>
-          <div class="trait-chips">
-            <span class="chip">💡 Leadership</span>
-            <span class="chip">🔍 Problem Solving</span>
-            <span class="chip">💬 Communication</span>
-            <span class="chip">☀️ Optimism</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================================================
+    <!-- ============================================================
        SKILLS SECTION
   ============================================================ -->
-  <section class="section section-alt" id="skills">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Tech Arsenal</span>
-        <h2 class="section-title">Skills &amp; <span class="gradient-text">Technologies</span></h2>
-      </div>
-      <div class="skills-grid">
-        <!-- Category tiles -->
-        <div class="glass-tile skill-category reveal" style="--delay:0s">
-          <div class="tile-glow"></div>
-          <h3 class="skill-cat-title">
-            <span class="skill-cat-icon">🐍</span> Languages
-          </h3>
-          <div class="skill-bars">
-            <div class="skill-bar-item">
-              <div class="skill-bar-header"><span>Python</span><span class="skill-pct">95%</span></div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="95"></div>
-              </div>
+    <section class="section section-alt" id="skills">
+        <div class="container">
+            <div class="section-header reveal active">
+                <span class="section-tag">Tech Arsenal</span>
+                <h2 class="section-title">Skills &amp; <span class="gradient-text">Technologies</span></h2>
             </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header"><span>Java</span><span class="skill-pct">75%</span></div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="75"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header"><span>C++</span><span class="skill-pct">70%</span></div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="70"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+            <div class="skills-grid">
+                <!-- Category tiles -->
+                <div class="glass-tile skill-category reveal active" style="--delay:0s">
+                    <div class="tile-glow"></div>
+                    <h3 class="skill-cat-title">
+                        <span class="skill-cat-icon">🐍</span> Languages
+                    </h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Python</span><span class="skill-pct">95%</span></div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="95" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Java</span><span class="skill-pct">75%</span></div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="75" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>C++</span><span class="skill-pct">70%</span></div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="70" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="glass-tile skill-category reveal" style="--delay:0.1s">
-          <div class="tile-glow"></div>
-          <h3 class="skill-cat-title">
-            <span class="skill-cat-icon">🤖</span> AI & ML
-          </h3>
-          <div class="skill-bars">
-            <div class="skill-bar-item">
-              <div class="skill-bar-header"><span>Agentic AI</span><span class="skill-pct">90%</span></div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="90"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header"><span>NLP</span><span class="skill-pct">85%</span></div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="85"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header"><span>ML Pipelines</span><span class="skill-pct">80%</span></div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="80"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+                <div class="glass-tile skill-category reveal active" style="--delay:0.1s">
+                    <div class="tile-glow"></div>
+                    <h3 class="skill-cat-title">
+                        <span class="skill-cat-icon">🤖</span> AI &amp; ML
+                    </h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Agentic AI</span><span class="skill-pct">90%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="90" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>NLP</span><span class="skill-pct">85%</span></div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="85" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>ML Pipelines</span><span class="skill-pct">80%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="80" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="glass-tile skill-category reveal" style="--delay:0.2s">
-          <div class="tile-glow"></div>
-          <h3 class="skill-cat-title">
-            <span class="skill-cat-icon">🌐</span> Web & Desktop
-          </h3>
-          <div class="skill-bars">
-            <div class="skill-bar-item">
-              <div class="skill-bar-header"><span>React</span><span class="skill-pct">80%</span></div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="80"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header"><span>PySide6</span><span class="skill-pct">88%</span></div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="88"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header"><span>HTML/CSS/JS</span><span class="skill-pct">82%</span></div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="82"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+                <div class="glass-tile skill-category reveal active" style="--delay:0.2s">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 52.1201% 69.7599%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <h3 class="skill-cat-title">
+                        <span class="skill-cat-icon">🌐</span> Web &amp; Desktop
+                    </h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>React</span><span class="skill-pct">80%</span></div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="80" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>PySide6</span><span class="skill-pct">88%</span></div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="88" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>HTML/CSS/JS</span><span class="skill-pct">82%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="82" style="width: 82%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="glass-tile skill-category reveal" style="--delay:0.3s">
-          <div class="tile-glow"></div>
-          <h3 class="skill-cat-title">
-            <span class="skill-cat-icon">🗄️</span> Data & Finance
-          </h3>
-          <div class="skill-bars">
-            <div class="skill-bar-item">
-              <div class="skill-bar-header"><span>SQL</span><span class="skill-pct">88%</span></div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="88"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header"><span>OLAP / MDX</span><span class="skill-pct">85%</span></div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="85"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header"><span>Report Automation</span><span class="skill-pct">92%</span></div>
-              <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="92"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+                <div class="glass-tile skill-category reveal active" style="--delay:0.3s">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 41.3428% 99.4966%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <h3 class="skill-cat-title">
+                        <span class="skill-cat-icon">🗄️</span> Data &amp; Finance
+                    </h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>SQL</span><span class="skill-pct">88%</span></div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="88" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>OLAP / MDX</span><span class="skill-pct">85%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="85" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Report Automation</span><span
+                                    class="skill-pct">92%</span></div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="92" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Tech pills tile -->
-        <div class="glass-tile skills-tags reveal" style="--delay:0.4s; grid-column: 1 / -1">
-          <div class="tile-glow"></div>
-          <h3>Full Tech Stack</h3>
-          <div class="tech-tag-grid">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">NLP</span>
-            <span class="tech-tag">Agentic AI</span>
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">PySide6</span>
-            <span class="tech-tag">SQL</span>
-            <span class="tech-tag">OLAP Servers</span>
-            <span class="tech-tag">MDX Queries</span>
-            <span class="tech-tag">C++</span>
-            <span class="tech-tag">Java</span>
-            <span class="tech-tag">DevOps</span>
-            <span class="tech-tag">Git</span>
-            <span class="tech-tag">Linux</span>
-            <span class="tech-tag">REST APIs</span>
-            <span class="tech-tag">Machine Learning</span>
-            <span class="tech-tag">SQLite</span>
-          </div>
+                <!-- Tech pills tile -->
+                <div class="glass-tile skills-tags reveal active" style="--delay:0.4s; grid-column: 1 / -1">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 69.184% 10.6817%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <h3>Full Tech Stack</h3>
+                    <div class="tech-tag-grid">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Agentic AI</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">PySide6</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">OLAP Servers</span>
+                        <span class="tech-tag">MDX Queries</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">DevOps</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">SQLite</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================================================
+    <!-- ============================================================
        PROJECTS SECTION
   ============================================================ -->
-  <section class="section" id="projects">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Portfolio</span>
-        <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-      </div>
-      <div class="projects-grid">
-
-        <div class="glass-tile project-card reveal" style="--delay:0s; --accent:#00e5ff">
-          <div class="tile-glow"></div>
-          <div class="project-header">
-            <div class="project-num">01</div>
-            <div class="project-links">
-              <a href="#" class="project-link" aria-label="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-                </svg>
-              </a>
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-header reveal active">
+                <span class="section-tag">Portfolio</span>
+                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
             </div>
-          </div>
-          <h3 class="project-title">AI Virtual Assistant</h3>
-          <p class="project-desc">An intelligent agentic AI system capable of understanding context, performing tasks
-            autonomously, and learning from interactions using cutting-edge NLP models.</p>
-          <div class="project-tags">
-            <span>Agentic AI</span><span>NLP</span><span>Python</span><span>LLM</span>
-          </div>
-          <div class="project-footer">
-            <span class="project-status status-complete">Completed</span>
-          </div>
-        </div>
+            <div class="projects-grid">
 
-        <div class="glass-tile project-card reveal" style="--delay:0.1s; --accent:#7c3aed">
-          <div class="tile-glow"></div>
-          <div class="project-header">
-            <div class="project-num">02</div>
-            <div class="project-links">
-              <a href="#" class="project-link" aria-label="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-                </svg>
-              </a>
+                <div class="glass-tile project-card reveal active" style="--delay:0s; --accent:#f59e0b">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 80.163% 88.509%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <div class="project-header">
+                        <div class="project-num">01</div>
+                        <div class="project-links">
+                            <a href="https://varun-tiruvail.github.io/WebDashboards/WebDashboard/NetworkManagement/" class="project-link" aria-label="Dashboard" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Wholesale Network Mgmt</h3>
+                    <p class="project-desc">High-tier data visualization dashboard mapping inventory velocity, AI-driven inter-shop transfers, and statistical stockout likelihood projections.</p>
+                    <div class="project-tags">
+                        <span>Analytics</span><span>Data Viz</span><span>Forecasting</span>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-status status-complete">Live Dashboard</span>
+                    </div>
+                </div>
+
+                <div class="glass-tile project-card reveal active" style="--delay:0.1s; --accent:#10b981">
+                    <div class="tile-glow"></div>
+                    <div class="project-header">
+                        <div class="project-num">02</div>
+                        <div class="project-links">
+                            <a href="https://varun-tiruvail.github.io/WebDashboards/WebDashboard/Wealth%20Portfolio/" class="project-link" aria-label="Portfolio" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Wealth Portfolio Dashboard</h3>
+                    <p class="project-desc">Financial advisor platform featuring real-time risk metrics (VaR, CVaR), Monte Carlo simulation trajectories, and automated client report generation tools.</p>
+                    <div class="project-tags">
+                        <span>Metrics Engine</span><span>Monte Carlo</span><span>Dashboard</span>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-status status-complete">Live Dashboard</span>
+                    </div>
+                </div>
+
+                <div class="glass-tile project-card reveal active" style="--delay:0.2s; --accent:#00e5ff">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 97.2826% 66.3174%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <div class="project-header">
+                        <div class="project-num">03</div>
+                        <div class="project-links">
+                            <a href="https://varun-tiruvail.github.io/pdf-web-editor/" class="project-link" aria-label="Live Demo" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">PDF Web Editor</h3>
+                    <p class="project-desc">A fully-featured client-side browser editor with annotations, merging, redactions, and metadata manipulation — entirely without server dependencies.</p>
+                    <div class="project-tags">
+                        <span>JavaScript</span><span>PDF.js</span><span>Web App</span><span>Client-Side</span>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-status status-complete">Live Platform</span>
+                    </div>
+                </div>
+
+                <div class="glass-tile project-card reveal active" style="--delay:0.3s; --accent:#7c3aed">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 75% 17.7249%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <div class="project-header">
+                        <div class="project-num">04</div>
+                        <div class="project-links">
+                            <a href="https://varun-tiruvail.github.io/pdf-web-editor/#ocr-tab" class="project-link" aria-label="OCR App" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Summary OCR</h3>
+                    <p class="project-desc">Intelligent template-driven extraction utilizing visual anchor bounding boxes to capture structured text data directly from scanned documents.</p>
+                    <div class="project-tags">
+                        <span>OCR</span><span>Data Capture</span><span>Template AI</span>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-status status-complete">Tool Integrated</span>
+                    </div>
+                </div>
+
+                <div class="glass-tile project-card reveal active" style="--delay:0.4s; --accent:#06b6d4">
+                    <div class="tile-glow"></div>
+                    <div class="project-header">
+                        <div class="project-num">05</div>
+                        <div class="project-links">
+                            <a href="https://varun-tiruvail.github.io/DreamRelm" class="project-link" aria-label="DreamRealm" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">DreamRealm Hub</h3>
+                    <p class="project-desc">A universe of immersive browser games including procedural labyrinths and 3D circuit racing (Maze.Run, Pixel.Drift) powered completely by zero-backend tech.</p>
+                    <div class="project-tags">
+                        <span>Game Engine</span><span>Procedural Gen</span><span>WebGL</span>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-status status-complete">Live Hub</span>
+                    </div>
+                </div>
+
+                <div class="glass-tile project-card reveal active" style="--delay:0.5s; --accent:#ff3366">
+                    <div class="tile-glow"></div>
+                    <div class="project-header">
+                        <div class="project-num">06</div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" aria-label="GitHub">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">AI Virtual Assistant</h3>
+                    <p class="project-desc">An intelligent agentic AI system capable of understanding context, performing tasks autonomously, and learning from interactions using cutting-edge NLP models.</p>
+                    <div class="project-tags">
+                        <span>Agentic AI</span><span>NLP</span><span>Python</span><span>LLM</span>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-status status-complete">Completed</span>
+                    </div>
+                </div>
+
+                <div class="glass-tile project-card reveal active" style="--delay:0.6s; --accent:#00e5ff">
+                    <div class="tile-glow"></div>
+                    <div class="project-header">
+                        <div class="project-num">07</div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" aria-label="GitHub">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Expense Categorizer</h3>
+                    <p class="project-desc">ML-powered financial transaction categorizer using NLP to classify expenses (entertainment, transport, dining, subscriptions) from bank activity data.</p>
+                    <div class="project-tags">
+                        <span>ML</span><span>NLP</span><span>Python</span><span>SQL</span>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-status status-complete">Completed</span>
+                    </div>
+                </div>
+
+                <div class="glass-tile project-card reveal active" style="--delay:0.7s; --accent:#f59e0b">
+                    <div class="tile-glow"></div>
+                    <div class="project-header">
+                        <div class="project-num">08</div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" aria-label="Live Demo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Valuation Workflows</h3>
+                    <p class="project-desc">Automated end-to-end valuation workflow system for a leading Enterprise FinTech, processing data from OLAP servers via MDX queries and generating customized client reports with Python automation.</p>
+                    <div class="project-tags">
+                        <span>Python</span><span>MDX</span><span>OLAP</span><span>Automation</span>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-status status-complete">Live In Production</span>
+                    </div>
+                </div>
+
             </div>
-          </div>
-          <h3 class="project-title">Professional PDF Editor</h3>
-          <p class="project-desc">A fully-featured desktop PDF editor built with PySide6, supporting annotations,
-            redactions, page management, OCR, and form handling with a sleek dark UI.</p>
-          <div class="project-tags">
-            <span>PySide6</span><span>Python</span><span>PDF</span><span>OCR</span>
-          </div>
-          <div class="project-footer">
-            <span class="project-status status-complete">Completed</span>
-          </div>
         </div>
+    </section>
 
-        <div class="glass-tile project-card reveal" style="--delay:0.2s; --accent:#06b6d4">
-          <div class="tile-glow"></div>
-          <div class="project-header">
-            <div class="project-num">03</div>
-            <div class="project-links">
-              <a href="#" class="project-link" aria-label="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">Summary OCR</h3>
-          <p class="project-desc">An intelligent OCR system using template-based extraction anchors for precise
-            field-level data capture from scanned documents, with dynamic box drawing and NLP post-processing.</p>
-          <div class="project-tags">
-            <span>EasyOCR</span><span>NLP</span><span>Python</span><span>SQLite</span>
-          </div>
-          <div class="project-footer">
-            <span class="project-status status-complete">Completed</span>
-          </div>
-        </div>
-
-        <div class="glass-tile project-card reveal" style="--delay:0.3s; --accent:#f59e0b">
-          <div class="tile-glow"></div>
-          <div class="project-header">
-            <div class="project-num">04</div>
-            <div class="project-links">
-              <a href="#" class="project-link" aria-label="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">Expense Categorizer</h3>
-          <p class="project-desc">ML-powered financial transaction categorizer using NLP to classify expenses
-            (entertainment, transport, dining, subscriptions) from bank activity data.</p>
-          <div class="project-tags">
-            <span>ML</span><span>NLP</span><span>Python</span><span>SQL</span>
-          </div>
-          <div class="project-footer">
-            <span class="project-status status-complete">Completed</span>
-          </div>
-        </div>
-
-        <div class="glass-tile project-card reveal" style="--delay:0.4s; --accent:#10b981">
-          <div class="tile-glow"></div>
-          <div class="project-header">
-            <div class="project-num">05</div>
-            <div class="project-links">
-              <a href="#" class="project-link" aria-label="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">Valuation Workflows</h3>
-          <p class="project-desc">Automated end-to-end valuation workflow system for UBS, processing data from OLAP
-            servers via MDX queries and generating customized client reports with Python automation.</p>
-          <div class="project-tags">
-            <span>Python</span><span>MDX</span><span>OLAP</span><span>Automation</span>
-          </div>
-          <div class="project-footer">
-            <span class="project-status status-live">Live @ UBS</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
+    <!-- ============================================================
        EXPERIENCE SECTION
   ============================================================ -->
-  <section class="section section-alt" id="experience">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Journey</span>
-        <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
-      </div>
-      <div class="timeline">
-        <div class="glass-tile timeline-card reveal">
-          <div class="tile-glow"></div>
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-role">Reporting Specialist</h3>
-                <div class="timeline-company">
-                  <span class="company-badge">UBS</span>
-                  &nbsp;· FinTech Division
+    <section class="section section-alt" id="experience">
+        <div class="container">
+            <div class="section-header reveal active">
+                <span class="section-tag">Journey</span>
+                <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
+            </div>
+            <div class="timeline">
+                <div class="glass-tile timeline-card reveal active">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 78.4722% 23.5649%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-role">Reporting Specialist</h3>
+                                <div class="timeline-company">
+                                    <span class="company-badge">Enterprise FinTech</span>
+                                    &nbsp;· Wealth Management
+                                </div>
+                            </div>
+                            <div class="timeline-meta">
+                                <span class="timeline-duration">0.8+ Years</span>
+                                <span class="timeline-loc">📍 Mumbai, India</span>
+                            </div>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Automating customized financial reports for High Net Worth Clients (HNWC) using Python,
+                                reducing
+                                manual effort by over 70%</li>
+                            <li>Querying and transforming complex financial data from OLAP Servers using MDX Queries for
+                                precise
+                                client-specific reporting</li>
+                            <li>Building intelligent automation pipelines for valuation workflows, integrating
+                                seamlessly with
+                                existing banking infrastructure</li>
+                            <li>Developing custom PDF report generation systems with dynamic data binding and branded
+                                layouts for
+                                private banking clients</li>
+                            <li>Applying NLP and AI techniques to enhance data extraction accuracy and report
+                                intelligence</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span>Python</span><span>OLAP</span><span>MDX</span><span>PDF
+                                Automation</span><span>NLP</span><span>FinTech</span>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="timeline-meta">
-                <span class="timeline-duration">1.5 Years</span>
-                <span class="timeline-loc">📍 Mumbai, India</span>
-              </div>
-            </div>
-            <ul class="timeline-points">
-              <li>Automating customized financial reports for High Net Worth Clients (HNWC) using Python, reducing
-                manual effort by over 70%</li>
-              <li>Querying and transforming complex financial data from OLAP Servers using MDX Queries for precise
-                client-specific reporting</li>
-              <li>Building intelligent automation pipelines for valuation workflows, integrating seamlessly with
-                existing banking infrastructure</li>
-              <li>Developing custom PDF report generation systems with dynamic data binding and branded layouts for
-                private banking clients</li>
-              <li>Applying NLP and AI techniques to enhance data extraction accuracy and report intelligence</li>
-            </ul>
-            <div class="timeline-tags">
-              <span>Python</span><span>OLAP</span><span>MDX</span><span>PDF
-                Automation</span><span>NLP</span><span>FinTech</span>
-            </div>
-          </div>
-        </div>
-        <!-- Education card -->
-        <div class="glass-tile timeline-card reveal" style="--delay:0.2s">
-          <div class="tile-glow"></div>
-          <div class="timeline-dot edu-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-role">MTech — Computer Science & Engineering</h3>
-                <div class="timeline-company">
-                  <span class="company-badge edu-badge">University</span>
-                  &nbsp;· AI Specialization
+                <!-- Intern card -->
+                <div class="glass-tile timeline-card reveal active" style="--delay:0.15s">
+                    <div class="tile-glow"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-role">Valuations Intern</h3>
+                                <div class="timeline-company">
+                                    <span class="company-badge">Enterprise FinTech</span>
+                                    &nbsp;· Wealth Management
+                                </div>
+                            </div>
+                            <div class="timeline-meta">
+                                <span class="timeline-duration">0.8 Years</span>
+                                <span class="timeline-loc">📍 Mumbai, India</span>
+                            </div>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Assisted in building Python-based valuation reports workflow components, learning best practices in large-scale data delivery.</li>
+                            <li>Trained under senior engineers to maintain high availability logic for OLAP servers.</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span>Python</span><span>Finance</span><span>Automation</span>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="timeline-meta">
-                <span class="timeline-duration">2 Years</span>
-                <span class="timeline-loc">🎓 India</span>
-              </div>
+                <!-- Education card -->
+                <div class="glass-tile timeline-card reveal active" style="--delay:0.2s">
+                    <div class="tile-glow"></div>
+                    <div class="timeline-dot edu-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-role">BTech + MTech</h3>
+                                <div class="timeline-company">
+                                    <span class="company-badge edu-badge">University</span>
+                                    &nbsp;· AI Specialization
+                                </div>
+                            </div>
+                            <div class="timeline-meta">
+                                <span class="timeline-duration">5 Years</span>
+                                <span class="timeline-loc">🎓 India</span>
+                            </div>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Specialization in Artificial Intelligence — deep expertise in ML, NLP, and neural
+                                architectures</li>
+                            <li>Research focus on agentic AI systems and autonomous decision-making frameworks</li>
+                            <li>Built production-grade desktop and web applications as part of academic and independent
+                                projects</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span>MTech</span><span>AI</span><span>Machine Learning</span><span>Research</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <ul class="timeline-points">
-              <li>Specialization in Artificial Intelligence — deep expertise in ML, NLP, and neural architectures</li>
-              <li>Research focus on agentic AI systems and autonomous decision-making frameworks</li>
-              <li>Built production-grade desktop and web applications as part of academic and independent projects</li>
-            </ul>
-            <div class="timeline-tags">
-              <span>MTech</span><span>AI</span><span>Machine Learning</span><span>Research</span>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================================================
+    <!-- ============================================================
        TESTIMONIALS SECTION
   ============================================================ -->
-  <section class="section" id="testimonials">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Reviews</span>
-        <h2 class="section-title">What People <span class="gradient-text">Say</span></h2>
-      </div>
-      <div class="testimonials-grid">
-
-        <div class="glass-tile testimonial-card reveal" style="--delay:0s">
-          <div class="tile-glow"></div>
-          <div class="quote-icon">"</div>
-          <p class="testimonial-text">Varun's ability to transform complex financial data requirements into elegant
-            automated solutions is remarkable. The reporting system he built saved our team countless hours every month.
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background: linear-gradient(135deg, #00e5ff, #7c3aed)">AM</div>
-            <div>
-              <div class="author-name">Alex Morrison</div>
-              <div class="author-role">Senior Manager · UBS</div>
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal active">
+                <span class="section-tag">Reviews</span>
+                <h2 class="section-title">What People <span class="gradient-text">Say</span></h2>
             </div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
+            <div class="testimonials-grid">
 
-        <div class="glass-tile testimonial-card reveal" style="--delay:0.15s">
-          <div class="tile-glow"></div>
-          <div class="quote-icon">"</div>
-          <p class="testimonial-text">What sets Varun apart is his curiosity. He doesn't just solve the problem in front
-            of him — he anticipates the next one. His AI projects demonstrate a rare depth of understanding.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background: linear-gradient(135deg, #f59e0b, #ef4444)">DR</div>
-            <div>
-              <div class="author-name">Dr. Rajan Sharma</div>
-              <div class="author-role">Professor · MTech Program</div>
+                <div class="glass-tile testimonial-card reveal active" style="--delay:0s">
+                    <div class="tile-glow"></div>
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">Varun's ability to transform complex financial data requirements into
+                        elegant
+                        automated solutions is remarkable. The reporting system he built saved our team countless hours
+                        every month.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #00e5ff, #7c3aed)">AA
+                        </div>
+                        <div>
+                            <div class="author-name">Aditya Adhikari</div>
+                            <div class="author-role">Design Engineer</div>
+                        </div>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+
+                <div class="glass-tile testimonial-card reveal active" style="--delay:0.15s">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 7.88043% 68.5941%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">What sets Varun apart is his curiosity. He doesn't just solve the
+                        problem in front
+                        of him — he anticipates the next one. His AI projects demonstrate a rare depth of understanding.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #f59e0b, #ef4444)">AG
+                        </div>
+                        <div>
+                            <div class="author-name">Arindam Ghoshal</div>
+                            <div class="author-role">AI Solutions Developer</div>
+                        </div>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+
+                <div class="glass-tile testimonial-card reveal active" style="--delay:0.3s">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 33.4239% 84.7988%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">The PDF Editor he developed is genuinely impressive — feature-rich,
+                        performant,
+                        and beautifully designed. Varun brings both technical excellence and aesthetic sensibility to
+                        everything he
+                        builds.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #10b981, #06b6d4)">SB
+                        </div>
+                        <div>
+                            <div class="author-name">Srujan Boda</div>
+                            <div class="author-role">Software Developer</div>
+                        </div>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+
             </div>
-            <div class="stars">★★★★★</div>
-          </div>
         </div>
+    </section>
 
-        <div class="glass-tile testimonial-card reveal" style="--delay:0.3s">
-          <div class="tile-glow"></div>
-          <div class="quote-icon">"</div>
-          <p class="testimonial-text">The PDF Editor he developed is genuinely impressive — feature-rich, performant,
-            and beautifully designed. Varun brings both technical excellence and aesthetic sensibility to everything he
-            builds.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background: linear-gradient(135deg, #10b981, #06b6d4)">PK</div>
-            <div>
-              <div class="author-name">Priya Kapoor</div>
-              <div class="author-role">Tech Lead · Independent Reviewer</div>
-            </div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
+    <!-- ============================================================
        BLOG SECTION
   ============================================================ -->
-  <section class="section section-alt" id="blog">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Thoughts</span>
-        <h2 class="section-title">From The <span class="gradient-text">Blog</span></h2>
-        <p class="section-subtitle">Articles &amp; insights coming soon — follow along for deep dives into AI,
-          automation, and modern engineering.</p>
-      </div>
-      <div class="blog-grid">
+    <section class="section section-alt" id="blog">
+        <div class="container">
+            <div class="section-header reveal active">
+                <span class="section-tag">Thoughts</span>
+                <h2 class="section-title">From The <span class="gradient-text">Blog</span></h2>
+                <p class="section-subtitle">Articles &amp; insights coming soon — follow along for deep dives into AI,
+                    automation, and modern engineering.</p>
+            </div>
+            <div class="blog-grid">
 
-        <div class="glass-tile blog-card reveal" style="--delay:0s">
-          <div class="tile-glow"></div>
-          <div class="blog-tag-row"><span class="blog-tag">Agentic AI</span><span class="blog-date">Coming Soon</span>
-          </div>
-          <h3 class="blog-title">Building Autonomous AI Agents: A Practical Guide</h3>
-          <p class="blog-excerpt">Exploring the architecture, tools, and patterns behind building truly autonomous AI
-            agents that can reason, plan, and act independently in real-world environments.</p>
-          <a href="#" class="blog-read-more">Read Soon →</a>
+                <div class="glass-tile blog-card reveal active" style="--delay:0s">
+                    <div class="tile-glow"></div>
+                    <div class="blog-tag-row"><span class="blog-tag">Agentic AI</span><span class="blog-date">Coming
+                            Soon</span>
+                    </div>
+                    <h3 class="blog-title">Building Autonomous AI Agents: A Practical Guide</h3>
+                    <p class="blog-excerpt">Exploring the architecture, tools, and patterns behind building truly
+                        autonomous AI
+                        agents that can reason, plan, and act independently in real-world environments.</p>
+                    <a href="#" class="blog-read-more">Read Soon →</a>
+                </div>
+
+                <div class="glass-tile blog-card reveal active" style="--delay:0.15s">
+                    <div class="tile-glow"></div>
+                    <div class="blog-tag-row"><span class="blog-tag">FinTech</span><span class="blog-date">Coming
+                            Soon</span>
+                    </div>
+                    <h3 class="blog-title">Automating HNW Client Reports: Lessons from UBS</h3>
+                    <p class="blog-excerpt">The challenges and solutions behind building scalable report automation
+                        systems for
+                        high-stakes financial environments using Python and OLAP technologies.</p>
+                    <a href="#" class="blog-read-more">Read Soon →</a>
+                </div>
+
+                <div class="glass-tile blog-card reveal active" style="--delay:0.3s">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 99.1848% 54.8239%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <div class="blog-tag-row"><span class="blog-tag">NLP</span><span class="blog-date">Coming
+                            Soon</span></div>
+                    <h3 class="blog-title">OCR Beyond the Basics: Anchor-Based Precision Extraction</h3>
+                    <p class="blog-excerpt">How to move past naive OCR and implement template-driven, anchor-based
+                        extraction
+                        systems that achieve production-grade accuracy on real-world scanned documents.</p>
+                    <a href="#" class="blog-read-more">Read Soon →</a>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <div class="glass-tile blog-card reveal" style="--delay:0.15s">
-          <div class="tile-glow"></div>
-          <div class="blog-tag-row"><span class="blog-tag">FinTech</span><span class="blog-date">Coming Soon</span>
-          </div>
-          <h3 class="blog-title">Automating HNW Client Reports: Lessons from UBS</h3>
-          <p class="blog-excerpt">The challenges and solutions behind building scalable report automation systems for
-            high-stakes financial environments using Python and OLAP technologies.</p>
-          <a href="#" class="blog-read-more">Read Soon →</a>
-        </div>
-
-        <div class="glass-tile blog-card reveal" style="--delay:0.3s">
-          <div class="tile-glow"></div>
-          <div class="blog-tag-row"><span class="blog-tag">NLP</span><span class="blog-date">Coming Soon</span></div>
-          <h3 class="blog-title">OCR Beyond the Basics: Anchor-Based Precision Extraction</h3>
-          <p class="blog-excerpt">How to move past naive OCR and implement template-driven, anchor-based extraction
-            systems that achieve production-grade accuracy on real-world scanned documents.</p>
-          <a href="#" class="blog-read-more">Read Soon →</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
+    <!-- ============================================================
        CONTACT SECTION
   ============================================================ -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">Let's Connect</span>
-        <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
-        <p class="section-subtitle">Have an exciting project, a collaboration idea, or just want to say hello? I'd love
-          to hear from you.</p>
-      </div>
-      <div class="contact-grid">
-        <!-- Contact info tiles -->
-        <div class="contact-info">
-          <div class="glass-tile contact-info-card reveal" style="--delay:0s">
-            <div class="tile-glow"></div>
-            <div class="contact-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header reveal active">
+                <span class="section-tag">Let's Connect</span>
+                <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+                <p class="section-subtitle">Have an exciting project, a collaboration idea, or just want to say hello?
+                    I'd love
+                    to hear from you.</p>
             </div>
-            <div class="contact-detail">
-              <span class="contact-label">Email</span>
-              <a href="mailto:varun.tiruvail@example.com" class="contact-value">varun.tiruvail@example.com</a>
-            </div>
-          </div>
-          <div class="glass-tile contact-info-card reveal" style="--delay:0.1s">
-            <div class="tile-glow"></div>
-            <div class="contact-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path
-                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.91-.9a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-label">Phone</span>
-              <a href="tel:+919876543210" class="contact-value">+91 98765 43210</a>
-            </div>
-          </div>
-          <div class="glass-tile contact-info-card reveal" style="--delay:0.2s">
-            <div class="tile-glow"></div>
-            <div class="contact-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-label">Location</span>
-              <span class="contact-value">Mumbai, Maharashtra, India</span>
-            </div>
-          </div>
-          <div class="glass-tile contact-socials reveal" style="--delay:0.3s">
-            <div class="tile-glow"></div>
-            <h4>Find Me On</h4>
-            <div class="social-links">
-              <a href="#" class="social-link" aria-label="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-                </svg>
-                GitHub
-              </a>
-              <a href="#" class="social-link" aria-label="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-        </div>
+            <div class="contact-grid">
+                <!-- Contact info tiles -->
+                <div class="contact-info">
+                    <div class="glass-tile contact-info-card reveal active" style="--delay:0s">
+                        <div class="tile-glow"
+                            style="background: radial-gradient(circle at 13.5994% 51.5312%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                        </div>
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-label">Email</span>
+                            <a href="mailto:tiruvail.varun.in@gmail.com"
+                                class="contact-value">tiruvail.varun.in@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="glass-tile contact-info-card reveal active" style="--delay:0.1s">
+                        <div class="tile-glow"></div>
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.91-.9a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-label">Phone</span>
+                            <a href="tel:+917207833281" class="contact-value">+91 7207833281</a>
+                        </div>
+                    </div>
+                    <div class="glass-tile contact-info-card reveal active" style="--delay:0.2s">
+                        <div class="tile-glow"
+                            style="background: radial-gradient(circle at 67.3053% 92.573%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                        </div>
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-label">Location</span>
+                            <span class="contact-value">Mumbai, Maharashtra, India</span>
+                        </div>
+                    </div>
+                    <div class="glass-tile contact-socials reveal active" style="--delay:0.3s">
+                        <div class="tile-glow"
+                            style="background: radial-gradient(circle at 13.3689% 80.932%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                        </div>
+                        <h4>Find Me On</h4>
+                        <div class="social-links">
+                            <a href="https://github.com/Varun-Tiruvail" class="social-link" aria-label="GitHub" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z">
+                                    </path>
+                                </svg>
+                                GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/varun-tiruvail" class="social-link" aria-label="LinkedIn" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z">
+                                    </path>
+                                </svg>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Contact form -->
-        <div class="glass-tile contact-form-tile reveal" style="--delay:0.2s">
-          <div class="tile-glow"></div>
-          <h3>Send a Message</h3>
-          <form class="contact-form" id="contactForm" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="contactName">Full Name</label>
-                <input type="text" id="contactName" name="name" placeholder="John Doe" autocomplete="name" />
-                <span class="field-error" id="nameError"></span>
-              </div>
-              <div class="form-group">
-                <label for="contactEmail">Email Address</label>
-                <input type="email" id="contactEmail" name="email" placeholder="john@example.com"
-                  autocomplete="email" />
-                <span class="field-error" id="emailError"></span>
-              </div>
+                <!-- Contact form -->
+                <div class="glass-tile contact-form-tile reveal active" style="--delay:0.2s">
+                    <div class="tile-glow"
+                        style="background: radial-gradient(circle at 94.2376% 75.8279%, rgba(0, 229, 255, 0.08), transparent 60%);">
+                    </div>
+                    <h3>Send a Message</h3>
+                    <form class="contact-form" id="contactForm" action="mailto:tiruvail.varun.in@gmail.com" method="POST" enctype="text/plain" novalidate="">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactName">Full Name</label>
+                                <input type="text" id="contactName" name="name" placeholder="John Doe"
+                                    autocomplete="name">
+                                <span class="field-error" id="nameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Email Address</label>
+                                <input type="email" id="contactEmail" name="email" placeholder="john@example.com"
+                                    autocomplete="email">
+                                <span class="field-error" id="emailError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactSubject">Subject</label>
+                            <input type="text" id="contactSubject" name="subject"
+                                placeholder="Project Collaboration / Opportunity...">
+                            <span class="field-error" id="subjectError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" name="message" rows="5"
+                                placeholder="Tell me about your project or idea..."></textarea>
+                            <span class="field-error" id="messageError"></span>
+                        </div>
+                        <button type="submit" class="btn-send" id="sendBtn">
+                            <span class="btn-send-text">Send Message</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                        <div class="form-success" id="formSuccess">
+                            ✅ Message sent! I'll get back to you soon.
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="contactSubject">Subject</label>
-              <input type="text" id="contactSubject" name="subject"
-                placeholder="Project Collaboration / Opportunity..." />
-              <span class="field-error" id="subjectError"></span>
-            </div>
-            <div class="form-group">
-              <label for="contactMessage">Message</label>
-              <textarea id="contactMessage" name="message" rows="5"
-                placeholder="Tell me about your project or idea..."></textarea>
-              <span class="field-error" id="messageError"></span>
-            </div>
-            <button type="submit" class="btn-send" id="sendBtn">
-              <span class="btn-send-text">Send Message</span>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <line x1="22" y1="2" x2="11" y2="13" />
-                <polygon points="22 2 15 22 11 13 2 9 22 2" />
-              </svg>
-            </button>
-            <div class="form-success" id="formSuccess">
-              ✅ Message sent! I'll get back to you soon.
-            </div>
-          </form>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================================================
+    <!-- ============================================================
        FOOTER
   ============================================================ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <span class="logo-bracket">&lt;</span>VT<span class="logo-bracket">/&gt;</span>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>VT<span class="logo-bracket">/&gt;</span>
+                </div>
+                <p class="footer-text">Designed &amp; built by <strong>Varun Tiruvail</strong> · Obsessed with
+                    innovation.</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/Varun-Tiruvail" aria-label="GitHub" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/varun-tiruvail" aria-label="LinkedIn" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Varun Tiruvail · All rights reserved</p>
+            </div>
         </div>
-        <p class="footer-text">Designed &amp; built by <strong>Varun Tiruvail</strong> · Obsessed with innovation.</p>
-        <div class="footer-socials">
-          <a href="#" aria-label="GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-            </svg>
-          </a>
-          <a href="#" aria-label="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 Varun Tiruvail · All rights reserved</p>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
+
+
 </body>
 
 </html>

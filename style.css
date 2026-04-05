@@ -616,67 +616,85 @@ h4 {
 
 .avatar-wrapper {
     position: relative;
-    width: 320px;
-    height: 320px;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1 / 1;
+    animation: open-anim 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes open-anim {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .avatar-ring {
     position: absolute;
-    border-radius: 50%;
-    border: 1px solid transparent;
-    animation: spin-ring 8s linear infinite;
+    border-radius: 20px;
+    border: 2px solid transparent;
 }
 
 .ring-1 {
     inset: -20px;
-    border-top-color: var(--accent-cyan);
-    border-right-color: var(--accent-cyan);
-    opacity: 0.4;
+    border-color: var(--accent-cyan);
+    animation: rect-pulse 4s cubic-bezier(0.16, 1, 0.3, 1) infinite 0s;
 }
 
 .ring-2 {
-    inset: -36px;
-    border-bottom-color: var(--accent-purple);
-    border-left-color: var(--accent-purple);
-    animation-duration: 12s;
-    animation-direction: reverse;
-    opacity: 0.3;
+    inset: -40px;
+    border-color: var(--accent-purple);
+    animation: rect-pulse 4s cubic-bezier(0.16, 1, 0.3, 1) infinite 1.33s;
 }
 
 .ring-3 {
-    inset: -54px;
-    border-top-color: var(--accent-cyan);
-    border-right-color: transparent;
-    border-bottom-color: var(--accent-purple);
-    border-left-color: transparent;
-    animation-duration: 20s;
-    opacity: 0.15;
+    inset: -60px;
+    border-color: var(--accent-cyan);
+    animation: rect-pulse 4s cubic-bezier(0.16, 1, 0.3, 1) infinite 2.66s;
 }
 
-@keyframes spin-ring {
-    to {
-        transform: rotate(360deg);
+@keyframes rect-pulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1.15);
+        opacity: 0;
     }
 }
 
 .avatar-container {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: 20px;
     overflow: hidden;
-    border: 2px solid var(--glass-border-hover);
-    box-shadow: 0 0 60px rgba(0, 229, 255, 0.2), inset 0 0 40px rgba(124, 58, 237, 0.1);
+    position: relative;
+    border: 3px solid var(--glass-border-hover);
+    box-shadow: 0 0 60px rgba(0, 229, 255, 0.3), inset 0 0 40px rgba(124, 58, 237, 0.2);
+    /* Make container precisely wrap the image */
+    display: flex;
 }
 
 .avatar-svg {
+    display: block;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: top center;
 }
 
 .avatar-badge {
     position: absolute;
-    bottom: 16px;
-    right: -8px;
+    bottom: -15px;
+    right: -15px;
     background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
     color: #fff;
     padding: 6px 16px;
@@ -685,6 +703,7 @@ h4 {
     font-weight: 700;
     font-size: 0.85rem;
     box-shadow: 0 4px 20px rgba(0, 229, 255, 0.4);
+    z-index: 10;
 }
 
 /* Floating tech pills */
@@ -1807,8 +1826,909 @@ a.contact-value:hover {
 }
 
 /* ================================================================
-   THEME SWITCHER SECTION UI
+   DUAL ISLAND NAV SYSTEM
 ================================================================ */
+
+/* Base island nav wrapper */
+.island-nav {
+    position: fixed;
+    left: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    --panel-w: 164px;
+}
+
+.island-nav-color {
+    top: 20%;
+}
+
+.island-nav-layout {
+    bottom: 20%;
+}
+
+/* The little visible "tab" on the left edge */
+.island-tab {
+    width: 28px;
+    height: 56px;
+    background: rgba(15, 15, 25, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.3s, color 0.3s, width 0.3s;
+}
+
+.island-nav:hover .island-tab {
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+}
+
+/* The full panel (hidden by default) */
+.island-panel {
+    width: 0;
+    overflow: hidden;
+    background: rgba(8, 8, 16, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: none;
+    border-radius: 0 18px 18px 0;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 8px 0 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0;
+    transition: width 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+        padding 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.island-nav:hover .island-panel {
+    width: var(--panel-w);
+    padding: 18px 14px 18px 16px;
+}
+
+.island-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 2px;
+    white-space: nowrap;
+}
+
+/* COLOR NAV BUTTONS */
+.ipal-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    width: 100%;
+    text-align: left;
+}
+
+.ipal-btn:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.ipal-btn.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 12px var(--accent-cyan-dim);
+}
+
+.ipal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* LAYOUT NAV BUTTONS */
+.ilayout-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    width: 100%;
+    text-align: left;
+}
+
+.ilayout-btn:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateX(3px);
+}
+
+.ilayout-btn.active {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 14px var(--accent-cyan-dim);
+}
+
+.ilayout-icon {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+/* ================================================================
+   COLOR PALETTE SYSTEM  (data-color-theme on <html>)
+================================================================ */
+
+/* Aqua (default — uses :root already) */
+
+/* Ember */
+[data-color-theme="ember"] {
+    --accent-cyan: #f97316;
+    --accent-cyan-dim: rgba(249, 115, 22, 0.12);
+    --accent-purple: #ef4444;
+    --accent-purple-dim: rgba(239, 68, 68, 0.12);
+    --accent-glow: rgba(249, 115, 22, 0.4);
+    --glass-border: rgba(249, 115, 22, 0.14);
+    --glass-border-hover: rgba(249, 115, 22, 0.4);
+    --shadow-glow: 0 0 30px rgba(249, 115, 22, 0.12);
+    --shadow-glow-hover: 0 0 50px rgba(249, 115, 22, 0.25);
+}
+
+/* Forest */
+[data-color-theme="forest"] {
+    --accent-cyan: #22c55e;
+    --accent-cyan-dim: rgba(34, 197, 94, 0.12);
+    --accent-purple: #eab308;
+    --accent-purple-dim: rgba(234, 179, 8, 0.12);
+    --accent-glow: rgba(34, 197, 94, 0.4);
+    --glass-border: rgba(34, 197, 94, 0.14);
+    --glass-border-hover: rgba(34, 197, 94, 0.4);
+    --shadow-glow: 0 0 30px rgba(34, 197, 94, 0.1);
+    --shadow-glow-hover: 0 0 50px rgba(34, 197, 94, 0.25);
+}
+
+/* Sakura */
+[data-color-theme="sakura"] {
+    --accent-cyan: #ff6eb4;
+    --accent-cyan-dim: rgba(255, 110, 180, 0.12);
+    --accent-purple: #c084fc;
+    --accent-purple-dim: rgba(192, 132, 252, 0.12);
+    --accent-glow: rgba(255, 110, 180, 0.4);
+    --glass-border: rgba(255, 110, 180, 0.14);
+    --glass-border-hover: rgba(255, 110, 180, 0.4);
+    --shadow-glow: 0 0 30px rgba(255, 110, 180, 0.1);
+    --shadow-glow-hover: 0 0 50px rgba(255, 110, 180, 0.25);
+}
+
+/* Font overrides */
+[data-font-theme="playfair"] {
+    --font-heading: 'Playfair Display', serif;
+}
+
+[data-font-theme="nunito"] {
+    --font-heading: 'Nunito', sans-serif;
+    --font-body: 'Nunito', sans-serif;
+}
+
+[data-font-theme="mono"] {
+    --font-heading: 'JetBrains Mono', monospace;
+    --font-body: 'JetBrains Mono', monospace;
+}
+
+/* ================================================================
+   LAYOUT THEME: 3D PLANET
+================================================================ */
+
+/* Planet CSS animations */
+@keyframes planetSpin {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes ringOrbit {
+    from {
+        transform: rotateX(70deg) rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateX(70deg) rotateZ(360deg);
+    }
+}
+
+@keyframes moonOrbit1 {
+    from {
+        transform: rotate(0deg) translateX(130px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg) translateX(130px) rotate(-360deg);
+    }
+}
+
+@keyframes moonOrbit2 {
+    from {
+        transform: rotate(120deg) translateX(170px) rotate(-120deg);
+    }
+
+    to {
+        transform: rotate(480deg) translateX(170px) rotate(-480deg);
+    }
+}
+
+@keyframes moonOrbit3 {
+    from {
+        transform: rotate(240deg) translateX(200px) rotate(-240deg);
+    }
+
+    to {
+        transform: rotate(600deg) translateX(200px) rotate(-600deg);
+    }
+}
+
+@keyframes planetAtmosphere {
+
+    0%,
+    100% {
+        box-shadow: inset -20px -10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(139, 109, 36, 0.4);
+    }
+
+    50% {
+        box-shadow: inset -20px -10px 40px rgba(0, 0, 0, 0.5), 0 0 90px rgba(139, 109, 36, 0.6);
+    }
+}
+
+[data-layout-theme="planet"] {
+    --bg-primary: #f7f2e8;
+    --bg-secondary: #ede5d0;
+    --bg-tertiary: #e0d5bc;
+    --text-primary: #1c1409;
+    --text-secondary: #3d2e14;
+    --text-muted: #7a6545;
+    --glass-bg: rgba(255, 248, 230, 0.7);
+    --glass-border: rgba(139, 109, 36, 0.18);
+    --glass-border-hover: rgba(139, 109, 36, 0.45);
+    --glass-hover: rgba(255, 248, 220, 0.9);
+    --shadow-glow: 0 6px 30px rgba(139, 109, 36, 0.15);
+    --shadow-glow-hover: 0 12px 50px rgba(139, 109, 36, 0.3);
+    --font-heading: 'Playfair Display', serif;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+}
+
+/* Force light base for planet theme */
+[data-layout-theme="planet"] body {
+    background-color: var(--bg-primary);
+    background-image:
+        radial-gradient(ellipse at 80% 0%, rgba(200, 160, 80, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 10% 100%, rgba(139, 109, 36, 0.08) 0%, transparent 40%);
+    color: var(--text-primary);
+}
+
+[data-layout-theme="planet"] .navbar {
+    background: rgba(247, 242, 232, 0.9);
+    border-bottom: 1px solid rgba(139, 109, 36, 0.15);
+    backdrop-filter: blur(20px);
+}
+
+[data-layout-theme="planet"] .navbar.scrolled {
+    background: rgba(247, 242, 232, 0.98);
+}
+
+[data-layout-theme="planet"] .nav-link {
+    color: var(--text-secondary);
+}
+
+[data-layout-theme="planet"] .nav-link:hover {
+    color: #8b6d24;
+}
+
+[data-layout-theme="planet"] .nav-logo {
+    color: #1c1409;
+}
+
+[data-layout-theme="planet"] .logo-bracket {
+    color: #8b6d24;
+}
+
+[data-layout-theme="planet"] .btn-hire {
+    background: linear-gradient(135deg, #8b6d24, #c4922a);
+    color: #fff;
+}
+
+/* Hero reflow for planet theme */
+[data-layout-theme="planet"] .hero {
+    background: linear-gradient(160deg, #f7f2e8 0%, #ede5d0 50%, #e8dfc8 100%);
+    min-height: 100vh;
+}
+
+[data-layout-theme="planet"] .hero-content {
+    gap: 60px;
+}
+
+[data-layout-theme="planet"] .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    color: #1c1409;
+}
+
+[data-layout-theme="planet"] .gradient-text {
+    background: linear-gradient(135deg, #8b6d24, #c4922a, #d4a84b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-layout-theme="planet"] .hero-tagline,
+[data-layout-theme="planet"] .hero-role {
+    color: var(--text-secondary);
+}
+
+[data-layout-theme="planet"] .btn-primary {
+    background: linear-gradient(135deg, #1c1409, #3d2e14);
+    box-shadow: 0 8px 30px rgba(28, 20, 9, 0.3);
+}
+
+[data-layout-theme="planet"] .btn-secondary {
+    border-color: #8b6d24;
+    color: #8b6d24;
+}
+
+[data-layout-theme="planet"] .hero-badge {
+    background: rgba(139, 109, 36, 0.1);
+    border-color: rgba(139, 109, 36, 0.3);
+    color: #8b6d24;
+}
+
+[data-layout-theme="planet"] .badge-dot {
+    background: #8b6d24;
+}
+
+[data-layout-theme="planet"] .stat-num {
+    color: #8b6d24;
+}
+
+/* Replace avatar-wrapper with 3D planet visual */
+[data-layout-theme="planet"] .avatar-wrapper {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hide normal avatar in planet theme */
+[data-layout-theme="planet"] .avatar-container {
+    display: none;
+}
+
+[data-layout-theme="planet"] .avatar-badge {
+    display: none;
+}
+
+[data-layout-theme="planet"] .avatar-ring {
+    display: none;
+}
+
+/* The planet sphere */
+[data-layout-theme="planet"] .avatar-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 35%, #e8c87a 0%, #c4922a 25%, #8b6d24 55%, #5a4012 80%, #2d2008 100%);
+    box-shadow:
+        inset -20px -10px 40px rgba(0, 0, 0, 0.5),
+        0 0 60px rgba(139, 109, 36, 0.4),
+        0 0 120px rgba(196, 146, 42, 0.15);
+    animation: planetAtmosphere 4s ease-in-out infinite;
+    z-index: 2;
+}
+
+/* Ring 1 — main equatorial ring */
+[data-layout-theme="planet"] .avatar-wrapper::after {
+    content: '';
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 2px solid rgba(196, 146, 42, 0.5);
+    box-shadow: 0 0 8px rgba(196, 146, 42, 0.2);
+    animation: ringOrbit 12s linear infinite;
+    z-index: 1;
+}
+
+/* Moon 1 using tech-float slots */
+[data-layout-theme="planet"] .tech-float-1 {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #d0c0a0, #7a6040);
+    font-size: 0;
+    padding: 0;
+    box-shadow: 0 0 8px rgba(200, 170, 100, 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -7px 0 0 -7px;
+    animation: moonOrbit1 8s linear infinite;
+    z-index: 3;
+}
+
+[data-layout-theme="planet"] .tech-float-2 {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #e0d0b0, #8b7040);
+    font-size: 0;
+    padding: 0;
+    box-shadow: 0 0 6px rgba(200, 170, 100, 0.25);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -4.5px 0 0 -4.5px;
+    animation: moonOrbit2 14s linear infinite;
+    z-index: 3;
+}
+
+[data-layout-theme="planet"] .tech-float-3 {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #c0b090;
+    font-size: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -3px 0 0 -3px;
+    animation: moonOrbit3 20s linear infinite;
+    z-index: 3;
+}
+
+/* Extra ring (thin outer ring) — injected via planet-ring class */
+[data-layout-theme="planet"] .tech-float-4 {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(196, 146, 42, 0.2);
+    font-size: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -150px;
+    animation: ringOrbit 20s linear infinite reverse;
+    background: transparent;
+    z-index: 0;
+}
+
+/* Section overrides for planet theme */
+[data-layout-theme="planet"] .glass-tile {
+    background: rgba(255, 248, 230, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(139, 109, 36, 0.18);
+    box-shadow: 0 4px 24px rgba(28, 20, 9, 0.08), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+}
+
+[data-layout-theme="planet"] .glass-tile:hover {
+    border-color: rgba(139, 109, 36, 0.4);
+    box-shadow: 0 12px 40px rgba(28, 20, 9, 0.15), 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+}
+
+[data-layout-theme="planet"] .section-title {
+    color: #1c1409;
+}
+
+[data-layout-theme="planet"] .section-tag {
+    background: rgba(139, 109, 36, 0.12);
+    color: #8b6d24;
+    border-color: rgba(139, 109, 36, 0.25);
+}
+
+[data-layout-theme="planet"] .section-subtitle {
+    color: var(--text-muted);
+}
+
+[data-layout-theme="planet"] .skill-bar-fill {
+    background: linear-gradient(90deg, #8b6d24, #c4922a);
+}
+
+[data-layout-theme="planet"] .skill-bar-track {
+    background: rgba(139, 109, 36, 0.1);
+}
+
+[data-layout-theme="planet"] .tech-tag {
+    border-color: rgba(139, 109, 36, 0.2);
+    color: #5a4012;
+}
+
+[data-layout-theme="planet"] .tech-tag:hover {
+    border-color: #8b6d24;
+    color: #8b6d24;
+    background: rgba(139, 109, 36, 0.08);
+}
+
+[data-layout-theme="planet"] .timeline::before {
+    background: linear-gradient(to bottom, #8b6d24, #c4922a, transparent);
+}
+
+[data-layout-theme="planet"] .timeline-dot {
+    background: #8b6d24;
+}
+
+[data-layout-theme="planet"] .island-tab {
+    border-color: rgba(139, 109, 36, 0.2);
+}
+
+[data-layout-theme="planet"] .island-panel {
+    border-color: rgba(139, 109, 36, 0.15);
+}
+
+/* ================================================================
+   LAYOUT THEME: MINIMALISTIC
+   Inspired by: Samsung Health monitor UI — Light grey/white bg,
+   bold display headers, dark accent panels, rounded cards with
+   coloured icon modules floating in the layout.
+================================================================ */
+
+@keyframes minimalPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes minimalSlide {
+    from {
+        transform: translateX(-8px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+[data-layout-theme="minimal"] {
+    --bg-primary: #f0f0f0;
+    --bg-secondary: #e4e4e4;
+    --bg-tertiary: #d8d8d8;
+    --text-primary: #111111;
+    --text-secondary: #333333;
+    --text-muted: #777777;
+    --glass-bg: #ffffff;
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-border-hover: rgba(0, 0, 0, 0.2);
+    --glass-hover: #f5f5f5;
+    --shadow-glow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    --shadow-glow-hover: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --radius-lg: 20px;
+    --radius-md: 16px;
+    --radius-sm: 12px;
+    --accent-cyan: #111111;
+    --accent-cyan-dim: rgba(0, 0, 0, 0.06);
+    --accent-purple: #6366f1;
+    --accent-glow: rgba(0, 0, 0, 0.1);
+}
+
+[data-layout-theme="minimal"] body {
+    background-color: #eeeef0;
+    background-image: none;
+    color: #111;
+}
+
+[data-layout-theme="minimal"] .navbar {
+    background: rgba(240, 240, 240, 0.9);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    backdrop-filter: blur(20px);
+}
+
+[data-layout-theme="minimal"] .navbar.scrolled {
+    background: rgba(240, 240, 240, 0.98);
+}
+
+[data-layout-theme="minimal"] .nav-link {
+    color: #444;
+}
+
+[data-layout-theme="minimal"] .nav-link:hover,
+[data-layout-theme="minimal"] .nav-link.active {
+    color: #111;
+}
+
+[data-layout-theme="minimal"] .nav-logo {
+    color: #111;
+}
+
+[data-layout-theme="minimal"] .logo-bracket {
+    color: #6366f1;
+}
+
+[data-layout-theme="minimal"] .btn-hire {
+    background: #111;
+    color: #fff;
+    border-radius: 50px;
+}
+
+/* Hero — inspired image: large bold name, dark circular panel behind avatar */
+[data-layout-theme="minimal"] .hero {
+    background: #eeeef0;
+}
+
+[data-layout-theme="minimal"] .hero-content {
+    gap: 40px;
+    align-items: center;
+}
+
+[data-layout-theme="minimal"] .hero-name {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1.05;
+    color: #111;
+}
+
+[data-layout-theme="minimal"] .gradient-text {
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-layout-theme="minimal"] .hero-tagline,
+[data-layout-theme="minimal"] .hero-role {
+    color: #555;
+}
+
+[data-layout-theme="minimal"] .hero-badge {
+    background: rgba(99, 102, 241, 0.08);
+    border-color: rgba(99, 102, 241, 0.2);
+    color: #6366f1;
+}
+
+[data-layout-theme="minimal"] .badge-dot {
+    background: #6366f1;
+}
+
+[data-layout-theme="minimal"] .btn-primary {
+    background: #111;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    border-radius: 50px;
+}
+
+[data-layout-theme="minimal"] .btn-secondary {
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #333;
+    border-radius: 50px;
+}
+
+[data-layout-theme="minimal"] .stat-num {
+    color: #111;
+}
+
+[data-layout-theme="minimal"] .stat-divider {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Avatar area — dark circle backdrop like the inspiration */
+[data-layout-theme="minimal"] .avatar-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[data-layout-theme="minimal"] .avatar-ring {
+    display: none;
+}
+
+[data-layout-theme="minimal"] .avatar-container {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    overflow: hidden;
+    box-shadow: 0 16px 60px rgba(0, 0, 0, 0.25), 0 0 0 8px rgba(0, 0, 0, 0.05);
+    z-index: 2;
+    position: relative;
+}
+
+[data-layout-theme="minimal"] .avatar-svg {
+    width: 100%;
+    height: 100%;
+}
+
+[data-layout-theme="minimal"] .avatar-badge {
+    background: #fff;
+    color: #111;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Floating tech pills become module chips */
+[data-layout-theme="minimal"] .tech-float {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: #333;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 0.78rem;
+}
+
+/* Section tiles */
+[data-layout-theme="minimal"] .glass-tile {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+}
+
+[data-layout-theme="minimal"] .glass-tile:hover {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+}
+
+[data-layout-theme="minimal"] .tile-glow {
+    display: none;
+}
+
+[data-layout-theme="minimal"] .section-title {
+    color: #111;
+}
+
+[data-layout-theme="minimal"] .section-tag {
+    background: rgba(99, 102, 241, 0.08);
+    color: #6366f1;
+    border-color: rgba(99, 102, 241, 0.2);
+}
+
+[data-layout-theme="minimal"] .section-subtitle {
+    color: #666;
+}
+
+[data-layout-theme="minimal"] .skill-bar-track {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+[data-layout-theme="minimal"] .skill-bar-fill {
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+}
+
+[data-layout-theme="minimal"] .tech-tag {
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #444;
+    background: #f5f5f5;
+}
+
+[data-layout-theme="minimal"] .tech-tag:hover {
+    border-color: #6366f1;
+    color: #6366f1;
+    background: rgba(99, 102, 241, 0.06);
+}
+
+[data-layout-theme="minimal"] .timeline::before {
+    background: linear-gradient(to bottom, #6366f1, #a855f7, transparent);
+}
+
+[data-layout-theme="minimal"] .timeline-dot {
+    background: #6366f1;
+}
+
+/* Navbar hamburger and other dark-mode specific */
+[data-layout-theme="minimal"] .hamburger span {
+    background: #111;
+}
+
+/* Island navs in light context */
+[data-layout-theme="minimal"] .island-tab {
+    background: rgba(240, 240, 240, 0.9);
+    color: #444;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-layout-theme="minimal"] .island-panel {
+    background: rgba(245, 245, 245, 0.97);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-layout-theme="minimal"] .island-label {
+    color: rgba(0, 0, 0, 0.35);
+}
+
+[data-layout-theme="minimal"] .ipal-btn,
+[data-layout-theme="minimal"] .ilayout-btn {
+    color: rgba(0, 0, 0, 0.55);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-layout-theme="minimal"] .ipal-btn:hover,
+[data-layout-theme="minimal"] .ilayout-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #000;
+}
+
+[data-layout-theme="minimal"] .ipal-btn.active,
+[data-layout-theme="minimal"] .ilayout-btn.active {
+    background: rgba(0, 0, 0, 0.07);
+    color: #000;
+    border-color: #6366f1;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+}
+
+[data-layout-theme="minimal"] .scroll-indicator span,
+[data-layout-theme="minimal"] .scroll-line {
+    background: #333;
+    opacity: 0.5;
+}
+
+/* Scroll indicator color for dark navbars */
+[data-layout-theme="minimal"] .nav-link.active {
+    color: #6366f1;
+    background: rgba(99, 102, 241, 0.07);
+}
+
+/* Footer override */
+[data-layout-theme="minimal"] footer {
+    background: #111;
+    color: #aaa;
+}
+
+[data-layout-theme="minimal"] .footer-logo-text {
+    color: #fff;
+}
+
 .themes-section {
     background: var(--bg-primary);
 }
@@ -2303,4 +3223,22 @@ a.contact-value:hover {
 
 [data-portfolio-theme="minimal"] .hero {
     background: var(--bg-primary);
+}
+
+/* ================================================================
+   PLANET CANVAS 3D — overrides when canvas renderer is active
+================================================================ */
+html[data-planet-canvas="true"] [data-layout-theme="planet"] .avatar-wrapper::before,
+html[data-planet-canvas="true"] [data-layout-theme="planet"] .avatar-wrapper::after {
+    display: none !important;
+}
+
+html[data-planet-canvas="true"] [data-layout-theme="planet"] .tech-float {
+    display: none !important;
+}
+
+html[data-planet-canvas="true"] [data-layout-theme="planet"] .avatar-wrapper {
+    width: 420px;
+    height: 420px;
+    overflow: visible;
 }
