@@ -195,11 +195,12 @@ animateParticles();
 // ============================================================
 const typedEl = document.getElementById('typedText');
 const words = [
+  'Data Scientist & APM',
+  'Quantitative Analyst',
+  'Product Manager',
   'Reporting Specialist',
   'AI Engineer',
   'Python Developer',
-  'Desktop App Builder',
-  'NLP Enthusiast',
   'FinTech Innovator',
 ];
 let wordIdx = 0;
